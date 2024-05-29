@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "prod": "npx react-native run-android --mode release",
+    "prod-android": "npx react-native run-android --mode release",
+    "prod-ios": "npx react-native run-ios --mode release",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "lint": "eslint .",
