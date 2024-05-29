@@ -5,7 +5,7 @@ import {
   ActivityIndicator,
   StyleSheet,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {useAppSelector} from '../../hooks/useAppSelector';
 import HeroItem from './components/HeroItem/HeroItem';
 import {useAppDispatch} from '../../hooks/useAppDispatch';
@@ -36,9 +36,9 @@ const HeroList = () => {
     }
   };
 
-  const handleItemPress = (heroName: string) => {
+  const handleItemPress = useCallback((heroName: string) => {
     navigation.navigate('heroDetails', {name: heroName});
-  };
+  }, []);
 
   if (isLoading && currentPage === 1) {
     return (
