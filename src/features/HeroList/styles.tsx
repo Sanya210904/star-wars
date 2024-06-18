@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {colors} from '../../styles/colors';
 
 export const styles = StyleSheet.create({
   additionalScreen: {
@@ -9,6 +10,6 @@ export const styles = StyleSheet.create({
   errorText: {
     fontSize: 24,
     fontWeight: '600',
-    color: '#000',
+    color: colors.textPrimary,
   },
 });

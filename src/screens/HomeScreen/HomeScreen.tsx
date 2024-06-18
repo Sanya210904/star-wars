@@ -1,17 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {View, Text} from 'react-native';
-import SafeArea from '../../ui/SafeArea/SafeArea';
+import SafeArea from '@app/ui/SafeArea/SafeArea';
 import {styles} from './styles';
-import Button from '../../ui/Button/Button';
-import HeroList from '../../features/HeroList/HeroList';
-import {useAppDispatch} from '../../hooks/useAppDispatch';
-import {resetLike} from '../../features/HeroList/store/heroSlice';
-import {useAppSelector} from '../../hooks/useAppSelector';
-import LikeCard from '../../components/LikeCard/LikeCard';
+import Button from '@app/ui/Button/Button';
+import HeroList from '@app/features/HeroList/HeroList';
+import {useAppDispatch} from '@app/hooks/useAppDispatch';
+import {resetLike} from '@app/features/HeroList/store/heroSlice';
+import {useAppSelector} from '@app/hooks/useAppSelector';
+import LikeCard from '@app/components/LikeCard/LikeCard';
 
 const HomeScreen = () => {
   const dispatch = useAppDispatch();
-  const {heroItems, likeCounter} = useAppSelector(state => state.hero);
+  const { likeCounter} = useAppSelector(state => state.hero);
 
   const handleResetButton = () => {
     dispatch(resetLike());

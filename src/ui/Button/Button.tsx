@@ -9,7 +9,6 @@ export enum ButtonType {
 }
 
 type ButtonProps = {
-  children?: ReactNode;
   title?: string;
   onPress: () => void;
   width?: DimensionValue;
@@ -20,7 +19,6 @@ type ButtonProps = {
 
 const Button: FC<ButtonProps> = props => {
   const {
-    children,
     onPress,
     title,
     width = '100%',

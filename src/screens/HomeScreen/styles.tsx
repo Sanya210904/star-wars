@@ -1,23 +1,25 @@
 import {StyleSheet} from 'react-native';
+import {colors} from '../../styles/colors';
+import {offsets} from '../../styles/offsets';
 
 export const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.surfacePrimary,
   },
   container: {
     flex: 1,
-    paddingVertical: 12,
+    paddingVertical: offsets.screenOffsetVertical,
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 8,
-    paddingHorizontal: 24,
+    paddingHorizontal: offsets.screenOffsetHorizontal,
   },
   title: {
-    color: '#000',
+    color: colors.textPrimary,
     fontSize: 24,
     fontWeight: '600',
   },
@@ -25,6 +27,6 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginVertical: 18,
-    paddingHorizontal: 24,
+    paddingHorizontal: offsets.screenOffsetHorizontal,
   },
 });

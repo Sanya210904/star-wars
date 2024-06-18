@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {colors} from '../../styles/colors';
 
 export const styles = StyleSheet.create({
   button: {
@@ -13,15 +14,15 @@ export const styles = StyleSheet.create({
   text: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#fff',
+    color: colors.textInverted,
   },
 
   primary: {
-    backgroundColor: '#d43a2c',
+    backgroundColor: colors.brandPrimary,
   },
   outlined: {
     borderWidth: 2,
-    borderColor: '#d43a2c',
+    borderColor: colors.brandPrimary,
   },
   clear: {
     backgroundColor: 'inherit',

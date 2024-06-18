@@ -1,21 +1,29 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, ActivityIndicator} from 'react-native';
-import {SafeArea, Button, ButtonType} from '../../ui/';
-import {useNavigation, useRoute} from '@react-navigation/native';
-import {useAppSelector} from '../../hooks/useAppSelector';
-import {Hero} from '../../features/HeroList/types/Hero';
+import {SafeArea, Button, ButtonType} from '@app/ui';
+import {useRoute} from '@react-navigation/native';
+import {useAppSelector, useAppNavigation} from '@app/hooks';
+import {Hero} from '@app/features/HeroList/types/Hero';
 import {styles} from './styles';
-import LeftArrow from '../../assets/icons/arrow-left.svg';
+import LeftArrow from '@app/assets/icons/arrow-left.svg';
+import {RouteProp} from '@react-navigation/native';
+import {TypeRootStackParamsList} from '@app/router/types/TypeRootStackParamsList';
+import {routeName} from '@app/router/constants/routeName';
+
+type HeroDetailsRouteProp = RouteProp<
+  TypeRootStackParamsList,
+  routeName.HeroDetails
+>;
 
 const HeroDetailsScreen = () => {
   const {heroItems} = useAppSelector(state => state.hero);
-  const navigation = useNavigation();
-  const route = useRoute();
+  const navigation = useAppNavigation();
+  const route = useRoute<HeroDetailsRouteProp>();
 
   const [loading, setLoading] = useState(false);
   const [currentHero, setCurrentHero] = useState<Hero | null>(null);
 
-  const heroName = (route.params as {name: string})?.name;
+  const heroName = route.params.name;
 
   useEffect(() => {
     getHeroByName();

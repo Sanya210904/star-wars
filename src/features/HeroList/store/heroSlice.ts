@@ -1,6 +1,5 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {$api} from '../../../api';
-import {Hero} from '../types/Hero';
 import {HeroesResponse} from '../types/HeroesResponse';
 import {HeroWithLike} from '../types/HeroWithLike';
 import {GenderCounter} from '../types/GenderCounter';
@@ -75,7 +74,7 @@ export const heroSlice = createSlice({
     },
   },
   extraReducers(builder) {
-    builder.addCase(fetchHeroes.pending, (state, action) => {
+    builder.addCase(fetchHeroes.pending, (state) => {
       state.isLoading = true;
     });
     builder.addCase(fetchHeroes.fulfilled, (state, action) => {
@@ -92,7 +91,7 @@ export const heroSlice = createSlice({
 
       if (totalPages !== Infinity) state.totalPages = totalPages;
     });
-    builder.addCase(fetchHeroes.rejected, (state, action) => {
+    builder.addCase(fetchHeroes.rejected, (state) => {
       state.isLoading = false;
     });
   },

@@ -1,15 +1,14 @@
 import React, {FC, memo} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
-import Button from '../../../../ui/Button/Button';
-import {ButtonType} from '../../../../ui/Button/Button';
-import {useAppDispatch} from '../../../../hooks/useAppDispatch';
+import Button from '@app/ui/Button/Button';
+import {ButtonType} from '@app/ui/Button/Button';
+import {useAppDispatch} from '@app/hooks/useAppDispatch';
 import {setLike} from '../../store/heroSlice';
-import HeartFilled from '../../../../assets/icons/heart-filled.svg';
-import HeartOutlined from '../../../../assets/icons/heart-oulined.svg';
+import HeartFilled from '@app/assets/icons/heart-filled.svg';
+import HeartOutlined from '@app/assets/icons/heart-oulined.svg';
 import {styles} from './styles';
 
 type HeroItemProps = {
-  id: number;
   name: string;
   gender: string;
   hasLike: boolean;
@@ -17,7 +16,7 @@ type HeroItemProps = {
 };
 
 const HeroItem: FC<HeroItemProps> = props => {
-  const {name, gender, hasLike, onItemPress, id} = props;
+  const {name, gender, hasLike, onItemPress} = props;
   const dispatch = useAppDispatch();
 
   return (

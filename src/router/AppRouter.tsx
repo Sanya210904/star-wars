@@ -1,5 +1,6 @@
-import {HomeScreen, HeroDetails} from '../screens';
+import {colors} from '@app/styles/colors';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {routes} from './constants/routes';
 
 const Stack = createNativeStackNavigator();
 
@@ -8,12 +9,13 @@ const AppRouter = () => {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
-        navigationBarColor: '#fff',
-        statusBarColor: '#fff',
+        navigationBarColor: colors.navigationBarColor,
+        statusBarColor: colors.statusBarColor,
         statusBarStyle: 'dark',
       }}>
-      <Stack.Screen name="home" component={HomeScreen} />
-      <Stack.Screen name="heroDetails" component={HeroDetails} />
+      {routes.map(route => (
+        <Stack.Screen key={route.name} {...route} />
+      ))}
     </Stack.Navigator>
   );
 };

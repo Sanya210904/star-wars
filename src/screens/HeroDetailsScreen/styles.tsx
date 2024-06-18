@@ -1,27 +1,31 @@
 import {StyleSheet} from 'react-native';
+import {colors} from '../../styles/colors';
+import {offsets} from '../../styles/offsets';
 
 export const styles = StyleSheet.create({
   additionalScreen: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.surfacePrimary,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingHorizontal: offsets.screenOffsetHorizontal,
+    paddingVertical: offsets.screenOffsetVertical,
   },
   errorText: {
     fontSize: 24,
     fontWeight: '600',
-    color: '#000',
+    color: colors.textPrimary,
   },
 
   screen: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.surfacePrimary,
   },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    paddingHorizontal: 24,
-    paddingVertical: 18,
+    backgroundColor: colors.surfacePrimary,
+    paddingHorizontal: offsets.screenOffsetHorizontal,
+    paddingVertical: offsets.screenOffsetVertical,
   },
   header: {
     flexDirection: 'row',
@@ -32,7 +36,7 @@ export const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '600',
     textAlign: 'center',
-    color: '#000',
+    color: colors.textPrimary,
   },
   categoryWrapper: {
     rowGap: 12,
@@ -45,16 +49,16 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingBottom: 8,
     borderBottomWidth: 1,
-    borderBottomColor: '#ededed',
+    borderBottomColor: colors.borderPrimary,
   },
   categoryTitle: {
     fontSize: 20,
     fontWeight: '400',
-    color: '#292929',
+    color: colors.textSecondary,
   },
   categorySubtile: {
     fontSize: 18,
     fontWeight: '500',
-    color: '#292929',
+    color: colors.textSecondary,
   },
 });

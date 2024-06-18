@@ -1,8 +1,9 @@
 import {StyleSheet} from 'react-native';
+import {colors} from '../../../../styles/colors';
 
 export const styles = StyleSheet.create({
   block: {
-    backgroundColor: '#e0e0e0',
+    backgroundColor: colors.surfaceSecondary,
     borderRadius: 8,
     padding: 12,
   },
@@ -15,7 +16,7 @@ export const styles = StyleSheet.create({
     width: '70%',
   },
   title: {
-    color: '#000',
+    color: colors.textPrimary,
     fontSize: 18,
     fontWeight: '500',
   },
@@ -25,12 +26,12 @@ export const styles = StyleSheet.create({
   },
   categoryTitle: {
     fontSize: 14,
-    color: '#252525',
+    color: colors.textSecondary,
     fontWeight: '500',
   },
   categoryValue: {
     fontSize: 14,
-    color: '#252525',
+    color: colors.textSecondary,
     fontWeight: '400',
   },
 });

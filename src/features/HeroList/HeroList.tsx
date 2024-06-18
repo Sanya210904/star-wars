@@ -1,24 +1,20 @@
-import {
-  View,
-  Text,
-  FlatList,
-  ActivityIndicator,
-  StyleSheet,
-} from 'react-native';
+import {View, Text, FlatList, ActivityIndicator} from 'react-native';
 import React, {useCallback, useEffect, useState} from 'react';
 import {useAppSelector} from '../../hooks/useAppSelector';
 import HeroItem from './components/HeroItem/HeroItem';
-import {useAppDispatch} from '../../hooks/useAppDispatch';
+import {useAppDispatch, useAppNavigation} from '../../hooks';
 import {fetchHeroes} from './store/heroSlice';
-import {useNavigation} from '@react-navigation/native';
 import {styles} from './styles';
+import HeroListFooter from './components/HeroListFooter/HeroListFooter';
+import {offsets} from '../../styles/offsets';
+import {routeName} from '@app/router/constants/routeName';
 
 const HeroList = () => {
   const {isLoading, error, heroItems, totalPages} = useAppSelector(
     state => state.hero,
   );
   const dispatch = useAppDispatch();
-  const navigation = useNavigation<any>();
+  const navigation = useAppNavigation();
 
   const [currentPage, setCurrentPage] = useState<number>(1);
 
@@ -37,7 +33,7 @@ const HeroList = () => {
   };
 
   const handleItemPress = useCallback((heroName: string) => {
-    navigation.navigate('heroDetails', {name: heroName});
+    navigation.navigate(routeName.HeroDetails, {name: heroName});
   }, []);
 
   if (isLoading && currentPage === 1) {
@@ -59,24 +55,17 @@ const HeroList = () => {
   return (
     <FlatList
       ListFooterComponent={
-        <View
-          style={{
-            height: 40,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          {isLoading && currentPage !== 1 ? (
-            <ActivityIndicator color={'#000'} size={30} />
-          ) : null}
-        </View>
+        <HeroListFooter toShowLoader={isLoading && currentPage !== 1} />
       }
       onEndReached={handleOnEndList}
-      contentContainerStyle={{paddingTop: 24, paddingHorizontal: 24}}
+      contentContainerStyle={{
+        paddingTop: 24,
+        paddingHorizontal: offsets.screenOffsetHorizontal,
+      }}
       ItemSeparatorComponent={() => <View style={{height: 24}} />}
       data={heroItems}
-      renderItem={({item, index}) => (
+      renderItem={({item}) => (
         <HeroItem
-          id={index}
           onItemPress={handleItemPress}
           name={item.name}
           gender={item.gender}
